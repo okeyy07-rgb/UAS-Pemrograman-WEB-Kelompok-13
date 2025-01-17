@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #10B981;
+            --dark-bg: #1F2937;
+        }
+        
+        body {
+            background-color: #111827;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .sidebar {
+            background-color: var(--dark-bg);
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            padding: 2rem;
+        }
+        
+        .main-content {
+            margin-left: 250px;
+            padding: 2rem;
+        }
+        
+        .crypto-card {
+            background-color: var(--dark-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .chart-container {
+            background-color: var(--dark-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .portfolio-container {
+            background-color: #22C55E;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo mb-8">
+            <h1 class="text-2xl font-bold text-green-500">Layanan Crypto</h1>
+        </div>
+        
+        <nav>
+            <a href="{{ url_for('dashboard') }}" class="no-underline text-white">
+                <div class="nav-item">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    Beranda
+                </div>
+            </a>
+            <a href="{{ url_for('grafik') }}" class="no-underline text-white">
+                <div class="nav-item">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                    Grafik
+                </div>
+            </a>
+            <a href="{{ url_for('transaksi') }}" class="no-underline text-white">
+                <div class="nav-item">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                    </svg>
+                    Transaksi
+                </div>
+            </a>
+            <a href="{{ url_for('berita') }}" class="no-underline text-white">
+                <div class="nav-item bg-green-600">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+                    </svg>
+                    Berita
+                </div>
+            </a>
+            <a href="{{ url_for('pengaturan') }}" class="no-underline text-white">
+                <div class="nav-item">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                Pengaturan
+            </a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="flex justify-between items-center mb-8">
+            <div class="search-bar">
+                <input type="text" placeholder="Cari" class="bg-gray-800 px-4 py-2 rounded-lg">
+            </div>
+        </div>
+
+
+<div id="berita-page" class="page main-content">
+    <h1 class="text-2xl font-bold mb-6">Berita & Pengumuman</h1>
+    
+    <div class="grid grid-cols-2 gap-6">
+        <div class="crypto-card">
+            <img src="https://png.pngtree.com/png-vector/20191121/ourmid/pngtree-shield-with-a-check-mark-safe-and-protect-logo-on-white-png-image_1870454.jpg" alt="Berita 1" class="w-full h-48 object-cover rounded-lg mb-4"/>
+            <h3 class="text-xl font-bold mb-2">Update Sistem Terbaru</h3>
+            <p class="text-gray-400 mb-4">17 Januari 2025</p>
+            <p class="mb-4">Kami telah melakukan pembaruan sistem untuk meningkatkan keamanan dan kenyamanan pengguna...</p>
+            <button class="text-green-500">Baca Selengkapnya →</button>
+        </div>
+        
+        <div class="crypto-card">
+            <img src="https://t3.ftcdn.net/jpg/00/48/29/92/360_F_48299241_I5A7IhGjjSuHYZXuTWhsjvNF2rhIhCMp.jpg" alt="Berita 2" class="w-full h-48 object-cover rounded-lg mb-4"/>
+            <h3 class="text-xl font-bold mb-2">Promo Akhir Tahun</h3>
+            <p class="text-gray-400 mb-4">16 Januari 2025</p>
+            <p class="mb-4">Dapatkan berbagai penawaran menarik untuk transaksi di platform kami...</p>
+            <button class="text-green-500">Baca Selengkapnya →</button>
+        </div>
+    </div>
+</div>
+
+<!-- Halaman Pengaturan -->
+<div id="pengaturan-page" class="page main-content">
+    <h1 class="text-2xl font-bold mb-6">Pengaturan Sistem</h1>
+    
+    <div class="grid grid-cols-2 gap-6">
+        <div class="crypto-card">
+            <h3 class="text-xl font-bold mb-4">Pengaturan Umum</h3>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-gray-400 mb-2">Nama Perusahaan</label>
+                    <input type="text" class="w-full bg-gray-800 px-4 py-2 rounded" value="Crypto Company">
+                </div>
+                
+                <div>
+                    <label class="block text-gray-400 mb-2">Email Kontak</label>
+                    <input type="email" class="w-full bg-gray-800 px-4 py-2 rounded" value="contact@company.com">
+                </div>
+                
+                <div>
+                    <label class="block text-gray-400 mb-2">Zona Waktu</label>
+                    <select class="w-full bg-gray-800 px-4 py-2 rounded">
+                        <option>WIB (UTC+7)</option>
+                        <option>WITA (UTC+8)</option>
+                        <option>WIT (UTC+9)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="crypto-card">
+            <h3 class="text-xl font-bold mb-4">Keamanan</h3>
+            
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold">Verifikasi 2 Langkah</h4>
+                        <p class="text-gray-400">Tingkatkan keamanan akun</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold">Notifikasi Email</h4>
+                        <p class="text-gray-400">Untuk aktivitas mencurigakan</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

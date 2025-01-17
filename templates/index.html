@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Halaman Utama Crypto</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #0b0d13;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .header .logo {
+            font-size: 24px;
+            color: #c4ff00;
+        }
+        .header nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+        }
+        .header .explore-btn, .header .login-btn {
+            background-color: #c4ff00;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .header .login-btn {
+            margin-left: 10px;
+        }
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 0;
+        }
+        .main-content .text-content {
+            max-width: 50%;
+        }
+        .main-content .text-content h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+        .main-content .text-content h1 span {
+            color: #c4ff00;
+        }
+        .main-content .text-content p {
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        .main-content .text-content .users {
+            display: flex;
+            align-items: center;
+        }
+        .main-content .text-content .users img {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .main-content .text-content .users span {
+            font-size: 18px;
+        }
+        .main-content .image-content {
+            position: relative;
+        }
+        .main-content .image-content img {
+            max-width: 100%;
+        }
+        .main-content .image-content .phone1 {
+            position: absolute;
+            top: 0;
+            left: 50px;
+        }
+        .main-content .image-content .phone2 {
+            position: absolute;
+            top: 100px;
+            left: 150px;
+        }
+        .main-content .illustration {
+            max-width: 50%;
+            text-align: center;
+        }
+        .footer {
+            padding: 50px 0;
+        }
+        .footer h2 {
+            font-size: 36px;
+        }
+        .footer h2 span {
+            color: #c4ff00;
+        }
+        .footer p {
+            font-size: 18px;
+        }
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .main-content .text-content, .main-content .image-content, .main-content .illustration {
+                max-width: 100%;
+            }
+            .main-content .image-content {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                CRYPTO.
+            </div>
+            <nav>
+                <a href="#">
+                    Beranda
+                </a>
+                <a href="#">
+                    Layanan
+                </a>
+                <a href="#">
+                    Tentang
+                </a>
+                <a href="#">
+                    Apa yang baru?
+                </a>
+            </nav>
+            <div>
+                <a class="explore-btn" href="{{ url_for('login') }}">
+                    Jelajahi sekarang
+                </a>
+                <a class="login-btn" href="{{ url_for('login') }}">
+                    Masuk
+                </a>
+            </div>
+        </header>
+        <div class="main-content">
+            <div class="text-content">
+                <p>
+                    AMANKAN UANG ANDA!
+                </p>
+                <h1>
+                    Platform investasi crypto terbaik
+                    <span>
+                        untuk masa depan Anda.
+                    </span>
+                </h1>
+                <div class="users">
+                    <img alt="Pengguna 1" height="40" src="https://storage.googleapis.com/a1aa/image/8QtqEc6mpWYsNZOOgNIKoCeDsOvsqRuIJX6Hfka2EKgGTfFoA.jpg" width="40"/>
+                    <img alt="Pengguna 2" height="40" src="https://storage.googleapis.com/a1aa/image/BG1MGDcjKSYAG1CYcfxIN4YyYOUC0TQf5L19DBK7DXCMTfFoA.jpg" width="40"/>
+                    <img alt="Pengguna 3" height="40" src="https://storage.googleapis.com/a1aa/image/BBTxLHg5kUJpAd4orfIho3lmsfYcOe1M1ZCBfrElpPYLM9LQB.jpg" width="40"/>
+                    <img alt="Pengguna 4" height="40" src="https://storage.googleapis.com/a1aa/image/wIcrKlKiLsqgGJUtxrUPJefOqAaRxndxwviTuBxj4d6NTfFoA.jpg" width="40"/>
+                    <img alt="Pengguna 5" height="40" src="https://storage.googleapis.com/a1aa/image/nQBj3wDaO5ryNRwfGe0qDdnQUCH6QTAauR7A8g5dwXqJTfFoA.jpg" width="40"/>
+                    <span>
+                        168K+ Pengguna Realtime
+                    </span>
+                </div>
+                <p>
+                    Polkadot menyatukan dan mengamankan ekosistem yang berkembang dari blockchain khusus yang disebut parachains. Aplikasi dan layanan di Polkadot dapat.
+                </p>
+            </div>
+            <div class="illustration">
+                <img alt="Ilustrasi" height="400" src="https://png.pngtree.com/png-vector/20240715/ourmid/pngtree-3d-bitcoin-crypto-currency-png-image_13116114.png" width="400"/>
+            </div>
+            <div class="image-content">
+                <img alt="Ponsel 1" class="phone1" height="600" src="https://storage.googleapis.com/a1aa/image/wGRd8rkZCS5MLJACIIH4bwTbfrHGzoaiI3BPj7Mj9vLkpfCUA.jpg" width="300"/>
+                <img alt="Ponsel 2" class="phone2" height="600" src="https://storage.googleapis.com/a1aa/image/p5ucBPcQHXIKMZiUNIHWlIVp9pqmaLLwzn677tGfddDipfCUA.jpg" width="300"/>
+            </div>
+        </div>
+        <footer class="footer">
+            <h2>
+                Mitra
+                <span>
+                    terpercaya
+                </span>
+                Anda dalam cryptocurrency.
+            </h2>
+            <p>
+                Polkadot menyatukan dan mengamankan ekosistem yang berkembang dari blockchain khusus yang disebut parachains. Aplikasi dan layanan di Polkadot dapat.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
